@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{session['name'].upper()}}-{{session['role'].upper()}}</title>
+</head>
+<body>
+    <a href="logout"><button>Logout</button></a>
+    <a href="profile"><button>{{session['name']}}</button></a>
+
+    <div class="container mt-3">
+        <h2>Start attendance</h2>
+        
+          <div class="mb-3 mt-3">
+            <label for="email">Subjectcode:</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter SubjectCode" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">time:</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter time" name="pswd">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="email">batch</label>
+            <input type="text" class="form-control" id="batch" placeholder="Enter batch" name="batch">
+          </div>
+          <button type="submit" class="btn btn-primary" id="s">Submit</button>
+        
+        <div class="mb-3 mt-3" id="d">
+            <label for="email">Generate code</label>
+            <input type="text" class="form-control" id="code" placeholder="Generated code" name="batch" disabled>
+        </div>
+
+
+</body>
+</html>
+
+{%include 'footer.html'%}
+<script>
+$("#d").hide();
+$("#s").on("click",function(){
+    data={"sub":$("#email").val(),batch:$("#batch").val(),time:$("#pwd").val()};
+    $.post({url:"storebatch",data,success:function(result) 
+        {
+            $("#code").val(result);
+            $("#email").val("");
+            $("#batch").val("");
+            $("#pwd").val("");
+            $("#d").show();
+        }
+    })
+});
+</script>

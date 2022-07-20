@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{session['name'].upper()}}-{{session['role'].upper()}}</title>
+</head>
+<body>
+    <a href="logout"><button>Logout</button></a>
+    <a href="profile"><button>{{session['name']}}</button></a>
+
+    <div class="container mt-3">
+        <h2>attendance</h2>
+        
+        
+        
+        <p></p>
+        <div class="mb-3 mt-3" id="d">
+            <label for="email">Enter code</label>
+            <input type="text" class="form-control" id="code" placeholder="Enter code" name="batch" >
+            <button type="submit" class="btn btn-primary" id="s">Submit</button>
+        </div>
+
+
+</body>
+</html>
+
+{%include 'footer.html'%}
+<script>
+    $("#s").on("click",function(){
+    data={"sub":$("#code").val()};
+    $.post({url:"storeat",data,success:function(result) 
+        {
+            console.log(result)
+        }
+    })
+});
+
+
+
+</script>

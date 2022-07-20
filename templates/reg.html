@@ -1,0 +1,37 @@
+{%include 'header.html'%}
+<body>
+
+<div class="container mt-3">
+  <h2>Registration form</h2>
+  <form action="/store" method="post">
+    <div class="mb-3 mt-3">
+        <label for="name">Name</label>
+        <input type="text" class="form-control"  placeholder="Enter name" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="pswd">Register number</label>
+        <input type="text" class="form-control" placeholder="Enter register number" name="pswd">
+      </div>
+    <div class="mb-3 mt-3">
+      <label for="batch">Batch</label>
+      <input type="text" class="form-control"  placeholder="Enter batch" name="batch">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control"  placeholder="Enter email" name="email">
+      </div>
+    <div class="mb-3">
+      <label for="psd">Password:</label>
+      <input type="password" class="form-control" placeholder="Enter password" name="psd">
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <a href="/">Login</a>
+</div>
+
+</body>
+</html>
+{%include 'footer.html'%}
+
+
